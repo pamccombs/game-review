@@ -1,0 +1,22 @@
+Create
+    -User
+        -db
+        -model
+        -controller
+        -views(show)
+
+    -Session
+        -controller
+        -views(new/login)
+
+    -Game
+        -db
+        -model
+        -controller
+        -views(show)
+
+    -Review
+        -db
+        -model
+        -controller
+        -views(show)

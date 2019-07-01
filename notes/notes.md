@@ -13,15 +13,19 @@
     -Review
       -:user_id
       -:game_id
-      -:rating
+      -:user_rating(1-10)
+        -validates :rating, :inclusion => 1..10
+      -:title (must fill out complete game title)
+      -:body
       -#Games.top_ratings_by_genre()
+      -#self.top_ratings
 
     -Game
-      -:title
-      -:rating(1-10) 
-        -validates :rating, :inclusion => 1..10
-      -#Genre.find_by(game_id)
-      -#self.top_ratings
+      -:title (must fill out complete game title)
+      -:game_platform
+      -#self.find_or_create_by
+      -#Review.find_by(game_id)
+      
   
 
 
