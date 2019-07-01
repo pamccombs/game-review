@@ -10,10 +10,10 @@
       -:password_digest
       -:admin
 
-    -Genre
+    -Review
       -:user_id
       -:game_id
-      -:category
+      -:rating
       -#Games.top_ratings_by_genre()
 
     -Game
