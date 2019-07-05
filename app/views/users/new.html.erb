@@ -1,2 +1,14 @@
 <h1>Users#new</h1>
 <p>Find me in app/views/users/new.html.erb</p>
+
+<%= form_for @user do |f| %>
+    <%= f.label :username %></br>
+    <%= f.text_field :username, :placeholder => (@user.errors.full_messages_for(:user_name).first || "Enter a User name") %></br>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %><br>
+    <%= f.label :admin, "Check box if you are a site admin" %><br>
+    <%= f.check_box :admin %><br>
+    <%= f.label :password %></br>
+    <%= f.password_field :password %></br>
+    <%= f.submit %>
+<% end %>
