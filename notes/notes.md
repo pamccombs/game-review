@@ -5,7 +5,7 @@
   -Models
     
     -User
-      -:display_name
+      -:username
       -:email
       -:password_digest
       -:admin
