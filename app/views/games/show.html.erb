@@ -1,2 +1,10 @@
 <h1>Games#show</h1>
 <p>Find me in app/views/games/show.html.erb</p>
+
+<p><strong>title: </strong><%= @game.title %></p>
+<p><strong>Game Genre: </strong><%= @game.genre %></p>
+<p><strong>Game Platform: </strong><%= @game.platform %></p>
+
+<%= link_to "See Games", games_path %>
+
+<%= link_to "Edit game", edit_game_path(@game) %>
