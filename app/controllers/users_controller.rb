@@ -19,6 +19,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def reviews
+    @user = User.find(params[:id])
+    render json: @user
+  end
+
   private
 
   def user_params
