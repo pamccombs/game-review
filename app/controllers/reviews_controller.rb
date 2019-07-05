@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
   def create
     @game = which_game?
     @review = Review.create(review_params)
+    redirect_to game_review_path(@game, @review)
   end
 
   def show
@@ -23,6 +24,7 @@ class ReviewsController < ApplicationController
   def edit
     @game = which_game?
     @review = Review.find(params[:id])
+    redirect_to game_review_path(@game, @review)
   end
 
   def update

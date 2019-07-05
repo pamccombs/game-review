@@ -13,7 +13,7 @@
     <h1 align= center>Game Review</h1>
 
     <% if logged_in? %>
-    <p>Welcome, <%=current_user.display_name%>! <%= link_to "Log Out", logout_path %>
+    <p>Welcome, <%=current_user.username%>! <%= link_to "Log Out", logout_path %>
     <% end %>
 
     <%= yield %>
