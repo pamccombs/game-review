@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GameReview</title>
+    <title>Game Review</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <h1 align= center>Game Review</h1>
+
+    <% if logged_in? %>
+    <p>Welcome, <%=current_user.display_name%>! <%= link_to "Log Out", logout_path %>
+    <% end %>
+
     <%= yield %>
+
   </body>
 </html>
