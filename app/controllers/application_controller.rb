@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     end
 
     def which_game?
-        game = Game.find(params[:game_id])
+        game = Game.find(params[:game_id] || params[:user_id])
         return game
     end
 end
