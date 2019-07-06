@@ -1,6 +1,8 @@
 <h1>Games#index</h1>
 <p>Find me in app/views/games/index.html.erb</p>
 
+<%= link_to "Show #{current_user.username}'s Reviews", user_path(current_user) %> 
+
 <h1>Listing Games</h1>
 <table>
   <thead>
