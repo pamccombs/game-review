@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   resources :games do
     resources :reviews
   end
-  resources :users
+
+  resources :users do
+    resources :reviews
+  end
+
+  resources :reviews
   
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
