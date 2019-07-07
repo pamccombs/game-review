@@ -1,6 +1,8 @@
 <h1>Games#show</h1>
 <p>Find me in app/views/games/show.html.erb</p>
 
+<%= link_to "Show #{current_user.username}'s Profile", user_path(current_user) %> 
+
 <h1>Welcome to the homepage for <%= @game.title %> for the <%= @game.platform %>!</h1>
 
 <h2>Select a Review to view it!</h2>
