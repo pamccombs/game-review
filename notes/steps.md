@@ -1,8 +1,9 @@
 Basic model is now created
 
     Next: 
-        User friendly links in views
-        Flash error messages
+        [X]User friendly links in views
+        [X]Add styles to pages
+        []Flash error messages
         Use GitHub OAuth
 
     Finalize:
