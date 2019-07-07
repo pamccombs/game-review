@@ -5,6 +5,8 @@ Basic model is now created
         [X] Add styles to pages
         [ ] Flash error messages
         [ ] Use GitHub OAuth
+        [ ] Refactor
+        [ ] Clean up pages
 
     Finalize:
         Admin functions
