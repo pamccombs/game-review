@@ -1,8 +1,16 @@
 class ReviewsController < ApplicationController
   
   def index
-    @game = which_game?
-    @reviews = @game.reviews
+    if params[:game_id]
+      @game = which_game?
+      @reviews = @game.reviews
+    elsif params[:user_id]
+      @user = which_user?
+      @reviews = @user.reviews
+    else
+      @reviews = Review.all
+    end
+
   end
 
   def new
@@ -17,8 +25,13 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @game = which_game?
-    @review = Review.find(params[:id])
+    if params[:game_id]
+      @game = which_game?
+      @review = Review.find(params[:id])
+    else
+      @review = Review.find(params[:id])
+    end
+    
   end
 
   def edit
