@@ -2,29 +2,30 @@
 <html>
   <head>
     <title>Game Review</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.0/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
   </head>
 
   <body>
     <h1 align= center>Game Review</h1>
+    <div class= "wrapper">
 
-    <% if logged_in? %>
-    <p>Welcome, <%=current_user.username%>! <%= link_to "Log Out", logout_path %>
+        <% if logged_in? %>
+        <p>Welcome, <%=current_user.username%>! <%= link_to "Log Out", logout_path %>
 
-      <div class= 'navbar'>
+          <div class= 'navbar'>
 
-        <%= link_to "#{current_user.username}'s Profile", user_path(current_user) %> 
-        <%= link_to "All Games", games_path(@games) %>
-        <%= link_to "All Reviews", reviews_path(@reviews) %>
-      
-      </div>
-    <% end %>
+            <%= link_to "#{current_user.username}'s Profile", user_path(current_user) %> 
+            <%= link_to "All Games", games_path(@games) %>
+            <%= link_to "All Reviews", reviews_path(@reviews) %>
+          
+          </div>
+        <% end %>
 
-    <%= yield %>
-
+        <%= yield %>
+    </div>
   </body>
 </html>
