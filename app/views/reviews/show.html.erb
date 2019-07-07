@@ -1,7 +1,7 @@
 <h1>Reviews#show</h1>
 <p>Find me in app/views/reviews/show.html.erb</p>
 
-<%= link_to "Show #{current_user.username}'s Profile", user_path(current_user) %> 
+
 
 <h1><%= @review.game.title %></h1>
 
@@ -20,7 +20,9 @@ Made by: <%= @review.user.username %>
     <%= link_to "Delete this review", game_review_path, method: :delete %>
   
   <% elsif current_user.id == @review.user.id %>
-  <%= link_to "Update this review", edit_review_path %></br>
-  <%= link_to "Delete this review", review_path, method: :delete %>
+    <%= link_to "Update this review", edit_review_path %></br>
+    <%= link_to "Delete this review", review_path, method: :delete %>
 
 <% end %>
+
+

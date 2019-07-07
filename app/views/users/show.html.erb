@@ -8,8 +8,10 @@
 <h4>View our <%= link_to "games", games_path, data: { turbolinks: false } %> database and search for a game.</h4>
 <p>After you select a game, you can view the reviews for that game, as well as create your own!</p></br>
 
-<% if @user.reviews.empty?  %>
+<% if @user.reviews.empty? %>
+
     <p>You currently have not made any reviews</p>
+
 <% else %>
 
     <%= link_to "View a list of your reviews", user_reviews_path(@user, @reviews) %>

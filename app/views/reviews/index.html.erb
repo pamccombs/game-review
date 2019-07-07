@@ -1,14 +1,13 @@
 <h1>Reviews#index</h1>
 <p>Find me in app/views/reviews/index.html.erb</p>
 
-<%= link_to "Show #{current_user.username}'s Profile", user_path(current_user) %>
-
-<h1>Listing Your Reviews</h1>
+<h1>Listing Reviews</h1>
 <table>
   <thead>
     <tr>
       <th>Game Title</th>
       <th>Review Title</th>
+      <th>Review Author</th>
       <th>Rating</th>
       <th>Details</th>
     </tr>
@@ -18,6 +17,7 @@
       <tr>
         <td><%= review.game.title %></td>
         <td><%= review.title %></td>
+        <td><%= review.user.username %></td>
         <td><%= review.rating %></td>
         <td>
           
@@ -31,3 +31,4 @@
 
 
 <%= link_to "New Review", new_review_path %>
+
