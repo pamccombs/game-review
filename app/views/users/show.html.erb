@@ -12,8 +12,8 @@
     <p>You currently have not made any reviews</p>
 <% else %>
 
-
-    <h4><a href="/users/<%= @user.id %>/reviews" class="show_reviews_link">View a list of your reviews.</a></h4>
+    <%= link_to "View a list of your reviews", user_reviews_path(@user, @reviews) %>
+    
     <ol>
     </ol>
 
