@@ -2,8 +2,8 @@
 <p>Find me in app/views/reviews/index.html.erb</p>
 
 <h1>Listing Reviews</h1>
-<table>
-  <thead>
+<table style="width:100%" align= 'center'>
+  <thead align= 'center'>
     <tr>
       <th>Game Title</th>
       <th>Review Title</th>
@@ -12,7 +12,7 @@
       <th>Details</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody align= 'center'>
     <% @reviews.each do |review| %>
       <tr>
         <td><%= review.game.title %></td>
