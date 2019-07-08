@@ -10,7 +10,14 @@
   </head>
 
   <body>
+
     <h1 align= center>Game Review</h1>
+
+    <div class="container" align= center> <!-- flash -->
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+    </div> <!-- /flash-->
     <div class= "wrapper">
 
         <% if logged_in? %>
@@ -24,8 +31,7 @@
           
           </div>
         <% end %>
-
-        <%= yield %>
+        <%= yield %>  
     </div>
   </body>
 </html>
