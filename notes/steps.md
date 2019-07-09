@@ -4,6 +4,7 @@ Basic model is now created
         [X] User friendly links in views
         [X] Add styles to pages
         [ ] Flash error messages
+        [ ] Use Devise
         [ ] Use GitHub OAuth
         [ ] Refactor
         [ ] Clean up pages
