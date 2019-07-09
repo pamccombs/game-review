@@ -21,7 +21,9 @@
     <div class= "wrapper">
 
         <% if logged_in? %>
-        <p>Welcome, <%=current_user.username%>! <%= link_to "Log Out", logout_path %>
+          <p>Welcome, <%=current_user.username%>! <%= link_to "Log Out", logout_path %>
+        <% else %>
+          <%= link_to "Sign in with Github", "/auth/github" %>
 
           <div class= 'navbar'>
 

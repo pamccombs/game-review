@@ -8,6 +8,14 @@ class User < ApplicationRecord
     has_many :reviews
     has_many :games, through: :reviews
 
+    def self.create_with_omniauth(auth)
+        create! do |user|
+          user.provider = auth["provider"]
+          user.uid = auth["uid"]
+          user.name = auth["info"]["name"]
+        end
+    end
+
     def has_reviews?
         @user.reviews
     end
