@@ -1,8 +1,8 @@
 class CreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
-      t.string :provider
-      t.string :uid 
+      t.string :provider, null: false, index: true, unique: true
+      t.string :uid, null: false, index: true, unique: true
       t.string :name
       t.string :location
       t.string :image_url

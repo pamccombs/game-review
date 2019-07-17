@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :reviews
 
-  get "/auth/:provider/callback" => "sessions#create"
+  get '/auth/:provider/callback', to: 'sessions#create'
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
