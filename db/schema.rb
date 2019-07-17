@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 2019_07_05_185257) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "provider", null: false
-    t.string "uid", null: false
+    t.string "provider"
+    t.string "uid"
     t.string "name"
     t.string "location"
     t.string "image_url"
@@ -43,8 +43,6 @@ ActiveRecord::Schema.define(version: 2019_07_05_185257) do
     t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["provider"], name: "index_users_on_provider"
-    t.index ["uid"], name: "index_users_on_uid"
   end
 
 end
