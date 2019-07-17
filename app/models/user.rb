@@ -11,10 +11,12 @@ class User < ApplicationRecord
     
  
     def self.create_with_omniauth(auth)
-        create! do |user|
-        user.provider = auth["provider"]
-        user.uid = auth["uid"]
-        user.name = auth["info"]["name"]
+        oauth_name = auth["info"]["nickname"]
+        if @user = User.find_by(:username => oauth_name)
+          return @user
+        else
+          @user = User.create(:username => oauth_name, :email => SecureRandom.hex, :password => SecureRandom.hex)
+          return @user
         end
     end
         
