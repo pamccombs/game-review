@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'application#home'
- 
-  resources :games, only: [:index, :show, :new, :create, :edit] do
+   # For details on the DSL available within this file, see http://reviews.rubyonrails.org/routing.html
+   
+  resources :games do
     resources :reviews
   end
 
@@ -11,6 +10,9 @@ Rails.application.routes.draw do
   end
 
   resources :reviews
+
+  root 'application#home'
+  get '/users/:id/reviews' => 'users#reviews'
 
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/signin' => 'sessions#new'
