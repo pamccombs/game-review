@@ -42,15 +42,21 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     @review.update(review_params)
-    redirect_to review_path
+    
+    if @review.save
+      flash[:success] = "Review updated!"
+      redirect_to review_path
+    else
+      flash[:error]
+      redirect_to reviews_path
+    end
   end
 
   def destroy
     @review = Review.find(params[:id])
-    binding.pry
-    @game = Review.find(params[:game_id])
     @review.destroy
-    redirect_to user_reviews_path(@user, @reviews)
+    flash[:success] = "Review deleted!"
+    redirect_to reviews_path
   end
 
   private
