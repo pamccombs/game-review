@@ -3,13 +3,9 @@ Basic model is now created
     Next: 
         [X] User friendly links in views
         [X] Add styles to pages
-        [ ] Flash error messages
-        [ ] Use Devise
-        [ ] Use GitHub OAuth
+        [X] Flash error messages
+        [X] Use GitHub OAuth
         [ ] Refactor
-        [ ] Clean up pages
+        [X] Clean up pages
 
-    Finalize:
-        Admin functions
-            make sure only admin can edit and delete ALL games
-            make sure only admin can edit and delete ALL non-admin users
+    

@@ -1,6 +1,3 @@
-<h1>Games#show</h1>
-<p>Find me in app/views/games/show.html.erb</p>
-
 <h1>Welcome to the homepage for <%= @game.title %> for the <%= @game.platform %>!</h1>
 
 <h2>Select a Review to view it!</h2>
@@ -23,5 +20,3 @@
 <%= render :partial => 'reviews/form' %>
 
 <%= link_to "See Games", games_path %>
-
-<%= link_to "Edit game", edit_game_path(@game) %>
