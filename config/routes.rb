@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :reviews
 
   root 'application#home'
-  get '/users/:id/reviews' => 'users#reviews'
 
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/signin' => 'sessions#new'
