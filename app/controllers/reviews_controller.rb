@@ -21,8 +21,15 @@ class ReviewsController < ApplicationController
   def create
     @game = which_game?
     @review = Review.create(review_params)
-    flash[:success] = "Congratulations! Here's your review!"
-    redirect_to game_review_path(@game, @review)
+
+    if @review.save
+      flash[:success] = "Congratulations! Here's your review!"
+      redirect_to game_review_path(@game, @review)
+    else
+      flash[:notice] = "Please check all fields and try again"
+      redirect_to game_path(@game)
+    end
+
   end
 
   def show
