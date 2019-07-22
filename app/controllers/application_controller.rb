@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
-    helper_method :current_user, :logged_in?, :redirect_if_not_logged_in
+    helper_method :current_user, :logged_in?, :redirect_if_not_logged_in, :which_user?, :which_game?, :which_review?
 
     def home
         
@@ -21,6 +21,11 @@ class ApplicationController < ActionController::Base
     def which_game?
         game = Game.find(params[:game_id])
         return game
+    end
+    
+
+    def which_review?
+        review = Review.find(params[:id])
     end
 
     def which_user?

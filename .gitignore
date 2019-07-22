@@ -31,4 +31,4 @@
 /config/master.key
 
 #Ignore OAuth Keys
-config/initializers/omniauth.rb
+/config/initializers/omniauth.rb

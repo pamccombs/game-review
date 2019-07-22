@@ -35,32 +35,51 @@ class ReviewsController < ApplicationController
   def show
     if params[:game_id]
       @game = which_game?
-      @review = Review.find(params[:id])
+      @review = which_review?
     else
-      @review = Review.find(params[:id])
+      @review = which_review?
     end
     
   end
 
   def edit
-    @review = Review.find(params[:id])
+    if params[:game_id]
+      @game = which_game?
+      @review = which_review?
+    else
+      @review = which_review?
+    end
   end
 
   def update
-    @review = Review.find(params[:id])
-    @review.update(review_params)
-    
-    if @review.save
-      flash[:success] = "Review updated!"
-      redirect_to review_path
+    if params[:game_id]
+      @game = which_game?
+      @review = which_review?
+      @review.update(review_params)
+  
+      if @review.save
+        flash[:success] = "Review updated!"
+        redirect_to review_path
+      else
+        flash[:notice] = "Please check all fields and try again"
+        redirect_to reviews_path
+      end
     else
-      flash[:error]
-      redirect_to reviews_path
+    @review = which_review?
+    @review.update(review_params)
+  
+      if @review.save
+        flash[:success] = "Review updated!"
+        redirect_to review_path
+      else
+        flash[:notice] = "Please check all fields and try again"
+        redirect_to reviews_path
+      end
     end
   end
 
   def destroy
-    @review = Review.find(params[:id])
+    @review = which_review?
     @review.destroy
     flash[:success] = "Review deleted!"
     redirect_to reviews_path
