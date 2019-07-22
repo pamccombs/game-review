@@ -6,9 +6,10 @@
     <%= f.label :body %></br>
     <%= f.text_area :body %></br>
     <%= f.hidden_field :user_id, value: session[:user_id] %>
-    <% if params[@game] %>
-      <%= f.hidden_field :game_id, value: @game.id%>
-    <% else %>
+    <% if !params[:game_id] %>
+    <%= f.hidden_field :game_id, value: (@game.id)  %>
+    <% elsif !params[review_id] %>
+    <%= f.hidden_field :game_id, value: (@review.game.id)  %>
     <% end %>
     <%= f.submit data: { disable_with: false }%>
   <% end %>

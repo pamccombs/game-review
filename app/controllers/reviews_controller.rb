@@ -34,8 +34,7 @@ class ReviewsController < ApplicationController
 
   def show
     if params[:game_id]
-      @game = which_game?
-      @review = which_review?
+      which_game_and_review?
     else
       @review = which_review?
     end
@@ -44,8 +43,7 @@ class ReviewsController < ApplicationController
 
   def edit
     if params[:game_id]
-      @game = which_game?
-      @review = which_review?
+      which_game_and_review?
     else
       @review = which_review?
     end
@@ -53,28 +51,13 @@ class ReviewsController < ApplicationController
 
   def update
     if params[:game_id]
-      @game = which_game?
+      which_game_and_review?
+      @review.update(review_params)
+      notice_and_path
+    else
       @review = which_review?
       @review.update(review_params)
-  
-      if @review.save
-        flash[:success] = "Review updated!"
-        redirect_to review_path
-      else
-        flash[:notice] = "Please check all fields and try again"
-        redirect_to reviews_path
-      end
-    else
-    @review = which_review?
-    @review.update(review_params)
-  
-      if @review.save
-        flash[:success] = "Review updated!"
-        redirect_to review_path
-      else
-        flash[:notice] = "Please check all fields and try again"
-        redirect_to reviews_path
-      end
+      notice_and_path
     end
   end
 

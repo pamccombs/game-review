@@ -10,15 +10,7 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.create(game_params)
-
-    if @game.save
-      flash[:success] = "Congratulations! Create a review here!"
-      redirect_to game_path(@game)
-    else
-      flash[:notice] = "Please check all fields and try again"
-      redirect_to new_game_path
-    end
-    
+    notice_and_path
   end
 
   def show
