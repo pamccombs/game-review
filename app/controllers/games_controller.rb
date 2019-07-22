@@ -18,7 +18,6 @@ class GamesController < ApplicationController
     @review = Review.new
   end
 
-
   private
 
   def game_params

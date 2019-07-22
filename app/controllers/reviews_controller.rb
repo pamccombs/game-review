@@ -10,7 +10,6 @@ class ReviewsController < ApplicationController
     else
       @reviews = Review.all
     end
-
   end
 
   def new

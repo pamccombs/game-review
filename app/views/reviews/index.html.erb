@@ -17,15 +17,11 @@
         <td><%= review.user.username %></td>
         <td><%= review.rating %></td>
         <td>
-          
             <%= link_to "Show #{review.game.title} Review", review_path(review) %>
-          
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-
 <%= link_to "New Review", games_path %>
-

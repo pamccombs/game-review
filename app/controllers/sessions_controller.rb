@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   
   def new
+
   end
 
   
@@ -30,4 +31,5 @@ class SessionsController < ApplicationController
     session.delete :user_id
     redirect_to root_path :notice => "Signed out!"
   end
+  
 end

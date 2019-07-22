@@ -35,7 +35,6 @@ class ApplicationController < ActionController::Base
     end
 
     def notice_and_path
-
         if @review
             if @review.save
                 flash[:success] = "Review updated!"
@@ -59,6 +58,5 @@ class ApplicationController < ActionController::Base
         @game = which_game?
         @review = which_review?
     end
-
     
 end

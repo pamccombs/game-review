@@ -3,7 +3,6 @@
   <head>
     <title>Game Review</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag "style" %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -16,7 +15,7 @@
         <% flash.each do |key, value| %>
           <div class="alert alert-<%= key %>"><%= value %></div>
         <% end %>
-    </div> <!-- /flash-->
+    </div> <!-- /flash -->
     <div class= "wrapper">
 
         <% if logged_in? %>
@@ -28,14 +27,15 @@
             <%= link_to "All Games", games_path(@games) %>
             <%= link_to "All Reviews", reviews_path(@reviews) %>
           
-          </div>
+          </div><!-- /navbar -->
 
         <% else %>
+
           <%= link_to "Sign in with Github", "/auth/github" %>
 
-          
         <% end %>
         <%= yield %>  
+        
     </div>
   </body>
 </html>

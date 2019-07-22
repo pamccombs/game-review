@@ -15,14 +15,11 @@
         <td><%= game.genre %></td>
         <td><%= game.platform %></td>
         <td>
-          
             <%= link_to "Show #{game.title}", game_path(game) %>
-          
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 
 <%= link_to "New game", new_game_path %>
