@@ -2,7 +2,7 @@
 
 <h2>Select a Review to view it!</h2>
 
-<p><strong>title: </strong><%= @game.title %></p>
+<p><strong>Title: </strong><%= @game.title %></p>
 <p><strong>Game Genre: </strong><%= @game.genre %></p>
 <p><strong>Game Platform: </strong><%= @game.platform %></p>
 
@@ -11,7 +11,7 @@
     <% else %>
       <ol>
         <% @game.reviews.each do |review| %>
-          <li><%= link_to review.title, game_review_path(@game, review) %>, by <%= review.user.username %></li>
+          <li><%= link_to review.title, game_review_path(@game, review) %>, Rating: <%= review.rating %>,  by <%= review.user.username %></li>
         <% end %>
       </ol>
 <% end %>
