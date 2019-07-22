@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
         if @review
             if @review.save
                 flash[:success] = "Review updated!"
-                redirect_to review_path
+                redirect_to review_path(@review)
               else
                 flash[:notice] = "Please check all fields and try again"
                 redirect_to reviews_path
