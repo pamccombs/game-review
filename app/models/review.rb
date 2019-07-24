@@ -9,4 +9,12 @@ class Review < ApplicationRecord
         
     #search by rating
 
+    def self.popular
+        where(rating: 7..10)
+    end
+
+    #scope :popular -> { where(rating: 7..10) }
+
+
+
 end

@@ -59,6 +59,10 @@ class ReviewsController < ApplicationController
     redirect_to reviews_path
   end
 
+  def popular
+    @popular = Review.popular
+  end
+
   private
 
   def review_params
