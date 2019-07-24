@@ -3,9 +3,8 @@
   <thead align= 'center'>
     <tr>
       <th>Game Title</th>
-      <th>pop Title</th>
-      <th>pop Author</th>
       <th>Rating</th>
+      <th>By</th>
       <th>Details</th>
     </tr>
   </thead>
@@ -13,9 +12,8 @@
     <% @popular.each do |pop| %>
       <tr>
         <td><%= pop.game.title %></td>
-        <td><%= pop.title %></td>
-        <td><%= pop.user.username %></td>
         <td><%= pop.rating %></td>
+        <td><%= pop.user.username %></td>
         <td>
             <%= link_to "Show #{pop.game.title}", game_path(pop.game) %>
         </td>
