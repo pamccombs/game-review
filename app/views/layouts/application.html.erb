@@ -24,8 +24,10 @@
           <div class= 'navbar'>
 
             <%= link_to "#{current_user.username}'s Profile", user_path(current_user) %> 
+            <%= link_to "Popular Games", popular_path(@popular) %>
             <%= link_to "All Games", games_path(@games) %>
             <%= link_to "All Reviews", reviews_path(@reviews) %>
+            
           
           </div><!-- /navbar -->
 
