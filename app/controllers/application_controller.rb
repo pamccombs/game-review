@@ -43,14 +43,6 @@ class ApplicationController < ActionController::Base
                 flash[:notice] = "Please check all fields and try again"
                 redirect_to reviews_path
             end
-        else @game
-            if @game.save
-                flash[:success] = "Congratulations! Create a review here!"
-                redirect_to game_path(@game)
-            else
-                flash[:notice] = "Please check all fields and try again"
-                redirect_to new_game_path
-            end
         end
     end
 
