@@ -1,3 +1,9 @@
+<% if @game.errors %>
+    <% @game.errors.full_messages.each do |att| %>
+       <%= att %>
+    <% end %>
+<% end %>
+
 <%= form_for @game do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %></br>
