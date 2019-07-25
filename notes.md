@@ -23,6 +23,8 @@ Games has_many Users through reviews
 - [X] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
 
 reviews.rating
+reviews.title
+reviews.body
 
 - [X] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
 
@@ -47,15 +49,16 @@ Use GitHub OAuth
 
 - [X] Include nested resource show or index (URL e.g. users/2/recipes)
 
-reviews/1/games/10
+/games/1/reviews/1
 
 - [X] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
 
-reviews/1/games/new
+/games/1/reviews/new
 
 - [X] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Flash error
+notice_and_path
 
 Confirm:
 - [X] The application is pretty DRY
