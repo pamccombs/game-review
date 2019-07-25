@@ -19,8 +19,15 @@ class ReviewsController < ApplicationController
 
   def create
     @game = which_game?
-    @review = Review.create(review_params)
-    notice_and_path
+    @review = Review.new(review_params)
+
+    if @review.save
+      flash[:success] = "Review Created!"
+      redirect_to review_path(@review)
+    else
+      flash[:notice] = "Please check all fields and try again"
+      render :new
+    end
   end
 
   def show
@@ -67,6 +74,25 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:title, :body, :rating, :game_id, :user_id)
+  end
+
+  def which_game?
+    game = Game.find(params[:game_id])
+    return game
+  end
+
+  def which_review?
+    review = Review.find(params[:id])
+  end
+
+  def which_user?
+    user = User.find(params[:user_id])
+    return user
+  end
+
+  def which_game_and_review?
+    @game = which_game?
+    @review = which_review?
   end
 
 end
