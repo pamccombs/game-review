@@ -32,9 +32,12 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    #for game/review path
     if params[:game_id]
       which_game_and_review?
-    elsif params[:game_id]
+
+    #for review path
+    elsif params[:id]
       @review = which_review?
     end
     
@@ -52,10 +55,11 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    #How can I make this so that the app takes exactly what it needs and moves on instead of having to force a conditional in order to aviod errors?
     #for game/review path
     if params[:game_id]
       which_game_and_review?
-      @review.update(review_params)
+      @review.update(review_params) #@review.new?
       
       if @review
         if @review.save
