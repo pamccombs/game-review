@@ -27,7 +27,6 @@ class ReviewsController < ApplicationController
       redirect_to review_path(@review)
     else
       flash[:notice] = "Please check all fields and try again"
-      flash[:error]
       render :new
     end
   end
@@ -35,7 +34,7 @@ class ReviewsController < ApplicationController
   def show
     if params[:game_id]
       which_game_and_review?
-    else
+    elsif params[:game_id]
       @review = which_review?
     end
     
@@ -44,37 +43,40 @@ class ReviewsController < ApplicationController
   def edit
     if params[:game_id]
       which_game_and_review?
-    else
+
+    elsif params[:game_id]
       @review = which_review?
     end
   end
 
   def update
+    #for game/review path
     if params[:game_id]
       which_game_and_review?
       @review.update(review_params)
-
+      
       if @review
         if @review.save
             flash[:success] = "Review updated!"
             redirect_to review_path(@review)
-          else
-            flash[:notice] = "Please check all fields and try again"
-            render :new
+        else
+          flash[:notice] = "Please check all fields and try again"
+          render :new
         end
       end
 
-    else
+    #for review path
+    elsif params[:id]
       @review = which_review?
       @review.update(review_params)
-
+      
       if @review
           if @review.save
               flash[:success] = "Review updated!"
               redirect_to review_path(@review)
-            else
-              flash[:notice] = "Please check all fields and try again"
-              render :new
+          else
+            flash[:notice] = "Please check all fields and try again"
+            render :new
           end
       end
     end
