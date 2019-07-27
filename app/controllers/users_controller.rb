@@ -11,8 +11,8 @@ class UsersController < ApplicationController
       flash[:success] = "New User created!"
       redirect_to user_path(@user)
     else
-      redirect_to new_user_path
-      flash[:error]
+      flash[:notice] = "Please check all fields and try again"
+      render :new
     end
   end
 

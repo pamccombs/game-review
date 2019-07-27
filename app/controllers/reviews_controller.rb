@@ -27,6 +27,7 @@ class ReviewsController < ApplicationController
       redirect_to review_path(@review)
     else
       flash[:notice] = "Please check all fields and try again"
+      flash[:error]
       render :new
     end
   end
