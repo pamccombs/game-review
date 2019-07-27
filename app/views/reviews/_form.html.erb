@@ -1,3 +1,8 @@
+<% if @review.errors %>
+    <% @review.errors.full_messages.each do |att| %>
+       <%= att %>
+    <% end %>
+
 <%= form_for [@game, @review] do |f| %><br>
     <%= f.label :rating, "Rating (The rating must be between 1-10.)" %><br>
     <%= f.number_field :rating %><br>

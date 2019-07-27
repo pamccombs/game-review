@@ -5,7 +5,8 @@ class ReviewsController < ApplicationController
       @game = which_game?
       @reviews = @game.reviews
     elsif params[:user_id]
-      @user = which_user?
+      #For future functionality for all users not just current_user
+      @user = which_user? 
       @reviews = @user.reviews
     else
       @reviews = Review.all
@@ -51,11 +52,30 @@ class ReviewsController < ApplicationController
     if params[:game_id]
       which_game_and_review?
       @review.update(review_params)
-      notice_and_path
+
+      if @review
+        if @review.save
+            flash[:success] = "Review updated!"
+            redirect_to review_path(@review)
+          else
+            flash[:notice] = "Please check all fields and try again"
+            render :new
+        end
+      end
+
     else
       @review = which_review?
       @review.update(review_params)
-      notice_and_path
+
+      if @review
+          if @review.save
+              flash[:success] = "Review updated!"
+              redirect_to review_path(@review)
+            else
+              flash[:notice] = "Please check all fields and try again"
+              render :new
+          end
+      end
     end
   end
 
