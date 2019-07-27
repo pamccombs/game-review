@@ -1,3 +1,9 @@
+<% if @review.errors %>
+  <% @review.errors.full_messages.each do |att| %>
+      <%= att %><br>
+  <% end %>
+<% end %>
+
 <%= form_for @user do |f| %>
     <%= f.label :username %></br>
     <%= f.text_field :username, :placeholder => (@user.errors.full_messages_for(:username).first || "Enter a User name") %></br>
