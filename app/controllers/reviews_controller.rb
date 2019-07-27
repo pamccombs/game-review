@@ -41,10 +41,12 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    #for game/review path
     if params[:game_id]
       which_game_and_review?
 
-    elsif params[:game_id]
+    #for review path
+    elsif params[:id]
       @review = which_review?
     end
   end
@@ -57,8 +59,8 @@ class ReviewsController < ApplicationController
       
       if @review
         if @review.save
-            flash[:success] = "Review updated!"
-            redirect_to review_path(@review)
+          flash[:success] = "Review updated!"
+          redirect_to review_path(@review)
         else
           flash[:notice] = "Please check all fields and try again"
           render :new
@@ -72,8 +74,8 @@ class ReviewsController < ApplicationController
       
       if @review
           if @review.save
-              flash[:success] = "Review updated!"
-              redirect_to review_path(@review)
+            flash[:success] = "Review updated!"
+            redirect_to review_path(@review)
           else
             flash[:notice] = "Please check all fields and try again"
             render :new
