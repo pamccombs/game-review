@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action #set_game
+  before_action :set_game, only: [:new, :create] 
+  before_action :set_review, except: [:index, :new, :create]
 
   def index
     if params[:game_id]
@@ -15,12 +16,10 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    set_game
     @review = Review.new
   end
 
   def create
-    set_game
     @review = Review.new(review_params)
 
     if @review.save
@@ -33,17 +32,14 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    set_review
-  end
     
   end
 
   def edit
-    set_review
+    
   end
 
   def update
-    set_review
     @review.update(review_params)
     
     if @review
@@ -58,7 +54,6 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    set_review
     @review.destroy
     flash[:success] = "Review deleted!"
     redirect_to reviews_path
