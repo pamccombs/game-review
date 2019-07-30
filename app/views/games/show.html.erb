@@ -11,12 +11,12 @@
 <% else %>
   <ol>
     <% @game.reviews.each do |review| %>
-      <li><%= link_to review.title, game_review_path(@game, review) %>, Rating: <%= review.rating %>,  by <%= review.user.username %></li>
+      <li><%= link_to review.title, review_path(review) %>, Rating: <%= review.rating %>,  by <%= review.user.username %></li>
     <% end %>
   </ol>
 <% end %>
 
 <h2>Create a new review for this Game!</h2>
-<%= render :partial => 'reviews/form' %>
+<%= link_to "New Review", new_game_review_path(@game) %>
 
 <%= link_to "See Games", games_path %>
