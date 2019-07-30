@@ -33,58 +33,26 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    #for game/review path
-    if params[:game_id]
-      set_game_and_review
-
-    #for review path
-    elsif params[:id]
-      set_review
-    end
+    set_review
+  end
     
   end
 
   def edit
-    #for game/review path
-    if params[:game_id]
-      set_game_and_review
-
-    #for review path
-    elsif params[:id]
-      set_review
-    end
+    set_review
   end
 
   def update
-    #How can I make this so that the app takes exactly what it needs and moves on instead of having to force a conditional in order to aviod errors?
-    #for game/review path
-    if params[:game_id]
-      set_game_and_review
-      @review.update(review_params) #@review.new?
-      
-      if @review
-        if @review.save
-          flash[:success] = "Review updated!"
-          redirect_to review_path(@review)
-        else
-          flash[:notice] = "Please check all fields and try again"
-          render :new
-        end
-      end
-
-    #for review path
-    elsif params[:id]
-      set_review
-      @review.update(review_params)
-      
-      if @review
-          if @review.save
-            flash[:success] = "Review updated!"
-            redirect_to review_path(@review)
-          else
-            flash[:notice] = "Please check all fields and try again"
-            render :new
-          end
+    set_review
+    @review.update(review_params)
+    
+    if @review
+      if @review.save
+        flash[:success] = "Review updated!"
+        redirect_to review_path(@review)
+      else
+        flash[:notice] = "Please check all fields and try again"
+        render :new
       end
     end
   end
