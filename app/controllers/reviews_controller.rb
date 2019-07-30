@@ -1,12 +1,13 @@
 class ReviewsController < ApplicationController
-  
+  before_action #set_game
+
   def index
     if params[:game_id]
-      @game = which_game?
+      set_game
       @reviews = @game.reviews
     elsif params[:user_id]
       #For future functionality for all users not just current_user
-      @user = which_user? 
+      set_user
       @reviews = @user.reviews
     else
       @reviews = Review.all
@@ -14,12 +15,12 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @game = which_game?
+    set_game
     @review = Review.new
   end
 
   def create
-    @game = which_game?
+    set_game
     @review = Review.new(review_params)
 
     if @review.save
@@ -34,11 +35,11 @@ class ReviewsController < ApplicationController
   def show
     #for game/review path
     if params[:game_id]
-      which_game_and_review?
+      set_game_and_review
 
     #for review path
     elsif params[:id]
-      @review = which_review?
+      set_review
     end
     
   end
@@ -46,11 +47,11 @@ class ReviewsController < ApplicationController
   def edit
     #for game/review path
     if params[:game_id]
-      which_game_and_review?
+      set_game_and_review
 
     #for review path
     elsif params[:id]
-      @review = which_review?
+      set_review
     end
   end
 
@@ -58,7 +59,7 @@ class ReviewsController < ApplicationController
     #How can I make this so that the app takes exactly what it needs and moves on instead of having to force a conditional in order to aviod errors?
     #for game/review path
     if params[:game_id]
-      which_game_and_review?
+      set_game_and_review
       @review.update(review_params) #@review.new?
       
       if @review
@@ -73,7 +74,7 @@ class ReviewsController < ApplicationController
 
     #for review path
     elsif params[:id]
-      @review = which_review?
+      set_review
       @review.update(review_params)
       
       if @review
@@ -89,7 +90,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = which_review?
+    set_review
     @review.destroy
     flash[:success] = "Review deleted!"
     redirect_to reviews_path
@@ -105,23 +106,24 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:title, :body, :rating, :game_id, :user_id)
   end
 
-  def which_game?
-    game = Game.find(params[:game_id])
-    return game
+  def set_game
+    @game = Game.find_by(params[:game_id])
+    redirect_to games_path if !@game #rescue
   end
 
-  def which_review?
-    review = Review.find(params[:id])
+  def set_review
+    @review = Review.find_by(params[:id])
+    redirect_to reviews_path if !@review
   end
 
-  def which_user?
-    user = User.find(params[:user_id])
-    return user
+  def set_user
+    @user = User.find_by(params[:user_id])
+    redirect_to new_user_path if !@user
   end
 
-  def which_game_and_review?
-    @game = which_game?
-    @review = which_review?
+  def set_game_and_review
+    set_game
+    set_review
   end
 
 end

@@ -18,11 +18,11 @@ class UsersController < ApplicationController
 
   def show
     redirect_if_not_logged_in
-    @user = User.find(params[:id])
+    set_user
   end
 
   def reviews
-    @user = User.find(params[:id])
+    set_user
     #render json: @user
   end
 
@@ -30,6 +30,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password, :admin)
+  end
+
+  def set_user
+    @user = User.find_by(params[:user_id])
+    redirect_to new_user_path if !@user
   end
 
 end
