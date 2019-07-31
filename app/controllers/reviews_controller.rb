@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_game, only: [:new, :create] 
+  before_action :set_game, only: [:new, :create]
   before_action :set_review, except: [:index, :new, :create]
 
   def index
@@ -21,6 +21,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+   
 
     if @review.save
       flash[:success] = "Review Created!"
@@ -41,15 +42,12 @@ class ReviewsController < ApplicationController
 
   def update
     @review.update(review_params)
-    
-    if @review
-      if @review.save
-        flash[:success] = "Review updated!"
-        redirect_to review_path(@review)
-      else
-        flash[:notice] = "Please check all fields and try again"
-        render :new
-      end
+    if @review.save
+      flash[:success] = "Review updated!"
+      redirect_to review_path(@review)
+    else
+      flash[:notice] = "Please check all fields and try again"
+      render :new
     end
   end
 

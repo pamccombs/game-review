@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :reviews]
   
   def new
     @user = User.new
@@ -18,11 +19,9 @@ class UsersController < ApplicationController
 
   def show
     redirect_if_not_logged_in
-    set_user
   end
 
   def reviews
-    set_user
     #render json: @user
   end
 

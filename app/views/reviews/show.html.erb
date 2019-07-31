@@ -9,12 +9,8 @@
 Made by: <%= @review.user.username %>
 
 </br>
-  <% if current_user.id == @review.user.id && params[:game_id] %>
-    <%= link_to "Update this review", edit_game_review_path %></br>
-    <%= link_to "Delete this review", game_review_path, method: :delete %>
-  <% elsif current_user.id == @review.user.id %>
     <%= link_to "Update this review", edit_review_path %></br>
     <%= link_to "Delete this review", review_path, method: :delete %>
-<% end %>
+
 
 
