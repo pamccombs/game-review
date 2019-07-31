@@ -1,14 +1,13 @@
 class ReviewsController < ApplicationController
-  before_action :set_game, only: [:new, :create]
-  before_action :set_review, except: [:index, :new, :create]
+  before_action :set_game, only: [:new]
+  before_action :set_review, except: [:index, :new, :create, :popular]
 
   def index
-    if params[:game_id]
+    if !!params[:game_id]
       set_game
       @reviews = @game.reviews
-    elsif params[:user_id]
-      #For future functionality for all users not just current_user
-      set_user
+    elsif !!params[:user_id]
+      @user = current_user
       @reviews = @user.reviews
     else
       @reviews = Review.all
@@ -20,8 +19,9 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    
     @review = Review.new(review_params)
-   
+    
 
     if @review.save
       flash[:success] = "Review Created!"
@@ -37,7 +37,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    
+    @game = @review.game
   end
 
   def update
@@ -68,18 +68,13 @@ class ReviewsController < ApplicationController
   end
 
   def set_game
-    @game = Game.find_by(params[:game_id])
-    redirect_to games_path if !@game #rescue
+    @game = Game.find_by(id: params[:game_id])
+    redirect_to games_path if !params[:game_id] #rescue
   end
 
   def set_review
-    @review = Review.find_by(params[:id])
-    redirect_to reviews_path if !@review
-  end
-
-  def set_user
-    @user = User.find_by(params[:user_id])
-    redirect_to new_user_path if !@user
+    @review = Review.find_by(id: params[:id])
+    redirect_to reviews_path if !params[:id]
   end
 
   def set_game_and_review

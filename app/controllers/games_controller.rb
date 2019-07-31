@@ -22,8 +22,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
-    @review = Review.new
+    set_game
   end
 
 
@@ -31,6 +30,11 @@ class GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit(:title, :genre, :platform)
+  end
+
+  def set_game
+    @game = Game.find_by(id: params[:id])
+    redirect_to games_path if !@game #rescue
   end
 
 end
