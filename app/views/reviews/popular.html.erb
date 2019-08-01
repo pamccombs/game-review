@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody align= 'center'>
-    <% @popular.each do |pop| %>
+    <% @popular.uniq{|t| t.game.title }.each do |pop| %>
       <tr>
         <td><%= pop.game.title %></td>
         <td><%= pop.rating %></td>
