@@ -61,6 +61,13 @@ class ReviewsController < ApplicationController
     @popular = Review.popular
   end
 
+  def avgrating
+    @reviews = Review.all
+    
+    
+    
+  end
+
   private
 
   def review_params
@@ -69,7 +76,7 @@ class ReviewsController < ApplicationController
 
   def set_game
     @game = Game.find_by(id: params[:game_id])
-    redirect_to games_path if !params[:game_id] #rescue
+    redirect_to games_path if !params[:game_id]
   end
 
   def set_review

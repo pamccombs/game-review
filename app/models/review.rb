@@ -7,8 +7,16 @@ class Review < ApplicationRecord
         belongs_to :user
         belongs_to :game
         
-    def self.popular
-        where(rating: 8..10).order('rating DESC')
+    #def self.popular
+        #where(rating: 8..10).order('rating DESC')
+    #end
+
+    scope :popular, -> { where(rating: 8..10).order('rating DESC') }
+
+    def avg_rating
+        self.average(:rating)
     end
+
+    
 
 end

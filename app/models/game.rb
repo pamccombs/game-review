@@ -13,4 +13,13 @@ class Game < ApplicationRecord
             self.all
         end
     end
+
+    def avg_rating
+        total = 0
+        @games.reviews.each do |review|
+            total += review.rating
+        end
+        avg = total/
+        
+    end
 end
