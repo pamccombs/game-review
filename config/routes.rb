@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   post '/logout' => 'sessions#destroy'
   get '/popular' => 'reviews#popular'
-  get '/avgrating' => 'reviews#avgrating'
+  get '/avgrating' => 'games#avgrating'
 
   
   

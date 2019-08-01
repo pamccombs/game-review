@@ -19,7 +19,8 @@ class Game < ApplicationRecord
         @games.reviews.each do |review|
             total += review.rating
         end
-        avg = total/
+        
+        avg = total/@games.reviews.length
         
     end
 end

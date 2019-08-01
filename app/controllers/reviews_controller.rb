@@ -61,12 +61,7 @@ class ReviewsController < ApplicationController
     @popular = Review.popular
   end
 
-  def avgrating
-    @reviews = Review.all
-    
-    
-    
-  end
+  
 
   private
 
