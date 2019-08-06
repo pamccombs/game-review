@@ -16,7 +16,7 @@
   </ol>
 <% end %>
 
-<p> Average Rating <%= @game.avg_rating %> <p>
+<p><strong>Average Rating: </strong> <%= @game.avg_rating %> <p>
 
 <h2>Create a new review for this Game!</h2>
 <%= link_to "New Review", new_game_review_path(@game) %>
