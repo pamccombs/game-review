@@ -25,12 +25,6 @@ class GamesController < ApplicationController
     set_game
   end
 
-  def avgrating
-    @games = Game.all
-    avg_rating
-  end
-
-
   private
 
   def game_params

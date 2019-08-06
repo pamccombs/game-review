@@ -16,11 +16,10 @@ class Game < ApplicationRecord
 
     def avg_rating
         total = 0
-        @games.reviews.each do |review|
+        self.reviews.each do |review|
             total += review.rating
         end
-        
-        avg = total/@games.reviews.length
-        
+        avg = total.to_f/self.reviews.length
+        avg.round(1)
     end
 end
