@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    
+    set_game
     @review = Review.new(review_params)
     
 
