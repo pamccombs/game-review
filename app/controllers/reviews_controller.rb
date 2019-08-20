@@ -6,11 +6,23 @@ class ReviewsController < ApplicationController
     if !!params[:game_id]
       set_game
       @reviews = @game.reviews
+      respond_to do |format|
+        format.json {render json: @game}
+        format.html
+      end
     elsif !!params[:user_id]
       @user = current_user
       @reviews = @user.reviews
+      respond_to do |format|
+        format.json {render json: @user}
+        format.html
+      end
     else
       @reviews = Review.all
+      respond_to do |format|
+        format.json {render json: @reviews}
+        format.html
+      end
     end
   end
 
@@ -24,11 +36,17 @@ class ReviewsController < ApplicationController
     
 
     if @review.save
+      respond_to do |format|
+        format.json {render json: @game}
+        format.html {redirect_to review_path(@review)}
       flash[:success] = "Review Created!"
-      redirect_to review_path(@review)
+      end  
     else
+      respond_to do |format|
+        format.json { render :json => { :errors => @guide.errors.full_messages }, :status => 422 }
+        format.html { render 'new'}
       flash[:notice] = "Please check all fields and try again"
-      render :new
+      end
     end
   end
 

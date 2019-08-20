@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  before_action :set_game, only: [:show]
   
   def index
     @games = Game.all
@@ -22,7 +23,10 @@ class GamesController < ApplicationController
   end
 
   def show
-    set_game
+    respond_to do |format|
+      format.json {render json: @game}
+      format.html
+    end
   end
 
   private
