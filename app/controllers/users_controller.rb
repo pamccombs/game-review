@@ -19,10 +19,14 @@ class UsersController < ApplicationController
 
   def show
     redirect_if_not_logged_in
+    respond_to do |format|
+      format.json {render json: @user}
+      format.html
+    end
   end
 
   def reviews
-    #render json: @user
+    render json: @user
   end
 
   private

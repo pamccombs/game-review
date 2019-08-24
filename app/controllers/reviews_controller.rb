@@ -15,7 +15,8 @@ class ReviewsController < ApplicationController
       @reviews = @user.reviews
       respond_to do |format|
         format.json {render json: @user}
-        format.html
+        format.html {render 'index.html', :layout => false }
+        format.js {render 'index.js', :layout => false }
       end
     else
       @reviews = Review.all
