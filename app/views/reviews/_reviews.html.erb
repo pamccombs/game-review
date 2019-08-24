@@ -1,0 +1,6 @@
+<ol>
+    <% @reviews.each do |review| %>
+    <li>Review Title - <%= review.title%> <br> Game Title - <%= review.game.title%> <br> 
+    <%= link_to "Show #{review.game.title} Review", review_path(review) %></li>
+    <%end%>
+</ol>

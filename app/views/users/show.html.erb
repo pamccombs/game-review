@@ -8,5 +8,14 @@
 <% if @user.reviews.empty? %>
     <p>You currently have not made any reviews</p>
 <% else %>
-    <%= link_to "View a list of your reviews", user_reviews_path(current_user, @reviews) %>
+
+
+
+    <%= link_to "View a list of your reviews", user_reviews_path(current_user, @reviews), :class => "show_reviews_link"%>
+
+<div class = "show_reviews">
+    <ol> 
+    </ol>
+</div>
+
 <% end %>
