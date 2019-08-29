@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_game, only: [:new]
+  before_action :set_game, only: [:new, :create]
   before_action :set_review, except: [:index, :new, :create, :popular]
 
   def index
@@ -32,20 +32,21 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    set_game
     @review = Review.new(review_params)
     
 
     if @review.save
       respond_to do |format|
-        format.json {render json: @game}
+        format.json {render json: @review}
         format.html {redirect_to review_path(@review)}
+        format.js   {render 'users/users_review', :layout => false}
       flash[:success] = "Review Created!"
       end  
     else
       respond_to do |format|
         format.json { render :json => { :errors => @guide.errors.full_messages }, :status => 422 }
-        format.html { render 'new'}
+        format.html { render 'reviews/new'}
+        format.js   { render 'users/reviews', layout => false}
       flash[:notice] = "Please check all fields and try again"
       end
     end
@@ -90,7 +91,7 @@ class ReviewsController < ApplicationController
 
   def set_game
     @game = Game.find_by(id: params[:game_id])
-    redirect_to games_path if !params[:game_id]
+    #redirect_to games_path if !params[:game_id]
   end
 
   def set_review

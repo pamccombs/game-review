@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :reviews]
+  before_action :set_user, only: [:reviews]
   
   def new
     @user = User.new
@@ -19,9 +19,12 @@ class UsersController < ApplicationController
 
   def show
     redirect_if_not_logged_in
+    @user = current_user
+    @reviews = @user.reviews
+    @review = Review.new
     respond_to do |format|
       format.json {render json: @user}
-      format.html
+      format.html 
     end
   end
 
@@ -39,5 +42,9 @@ class UsersController < ApplicationController
     @user = User.find_by(params[:user_id])
     redirect_to new_user_path if !@user
   end
+
+  # def review_params
+  #   params.require(:review).permit(:title, :body, :rating, :game_id, :user_id)
+  # end
 
 end
