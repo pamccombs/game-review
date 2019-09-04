@@ -2,7 +2,24 @@
 
 <h2>What would you like to do?</h2>
 
-<h4>View our <%= link_to "games", games_path, data: { turbolinks: false } %> database and search for a game.</h4>
+<h4>View our <%= link_to "games", games_path, data: { turbolinks: false }, :class => "show_games_link" %> database and search for a game.</h4>
+
+    <div class = "show_games">
+        <ol>    
+        </ol>
+    </div>
+    <div class = "show_game">
+        <ol> 
+        </ol>
+    </div>
+    <div class = "show_game_reviews">
+        <ol> 
+        </ol>
+    </div>
+    
+
+    
+
 <p>After you select a game, you can view the reviews for that game, as well as create your own!</p></br>
 
 <% if @user.reviews.empty? %>
@@ -10,8 +27,7 @@
 <% else %>
 
 
-
-<%= link_to "View a list of your reviews", user_reviews_path(@user, @reviews), :class => "show_reviews_link"%>
+<%= link_to "View a list of your reviews", user_reviews_path(current_user, @reviews), :class => "show_reviews_link"%>
 
 
 
@@ -20,24 +36,6 @@
     </ol>
 </div>
 
-<!-- <div class = "show_reviews">
-    <%#= render 'reviews/reviews' %>
-</div> -->
-
-
-<%= form_for [@user, @review] do |f| %><br>
-    <%= f.label :game_id, "Choose Game" %><br>
-    <%= f.collection_select :game_id, Game.order(:name),:id,:title, include_blank: true %><br>
-    <%= f.label :rating, "Rating (The rating must be between 1-10.)" %><br>
-    <%= f.number_field :rating %><br>
-    <%= f.label :title, "Title (32 char. max)" %><br>
-    <%= f.text_field :title %></br>
-    <%= f.label :body %></br>
-    <%= f.text_area :body %></br>
-    <%= f.hidden_field :user_id, value: session[:user_id] %>
-    <%#= f.hidden_field :game_id, value: params[:game_id] %>
-    <p><%= f.submit data: { disable_with: false }%></p>
-  <% end %>
 
 
 
