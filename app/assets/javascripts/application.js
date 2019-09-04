@@ -17,3 +17,4 @@
 //= require users
 //= require games
 //= require reviews
+//= require_self
