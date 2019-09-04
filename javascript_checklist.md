@@ -8,7 +8,7 @@ Please go through this checklist and be ready to respond to these points in our 
     1 game for show
 [X] How will you implement rendering a has_many relationship via JavaScript & JSON?
     For a specific game list reviews
-[ ] What form will you use to submit via AJAX?
+[X] What form will you use to submit via AJAX?
     Create new review
 [X] What is meant by JavaScript Model Objects and how will you implement them in your application?
     constructor
