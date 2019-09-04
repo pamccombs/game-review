@@ -7,8 +7,4 @@ class ReviewSerializer < ActiveModel::Serializer
     {game_title: self.object.game.title}
   end 
 
-  #def review
-    #{review_link: self.object.review.}
-  #end
-
 end

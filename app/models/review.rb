@@ -14,7 +14,12 @@ class Review < ApplicationRecord
     scope :popular, -> { where(rating: 8..10).order('rating DESC') }
 
     def avg_rating
-        self.average(:rating)
+        total = 0
+        self.each do |review|
+            total += review.rating
+        end
+        avg = total.to_f/self.reviews.length
+        avg.round(1)
     end
 
     

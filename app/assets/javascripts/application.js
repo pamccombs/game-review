@@ -14,7 +14,6 @@
 //= require rails-ujs
 //= require_tree .
 //= require activestorage
-//= require users
 //= require games
 //= require reviews
 //= require_self

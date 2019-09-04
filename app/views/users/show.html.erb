@@ -3,7 +3,6 @@
 <h2>What would you like to do?</h2>
 
 <h4>View our <%= link_to "games", games_path, data: { turbolinks: false }, :class => "show_games_link" %> database and search for a game.</h4>
-
     <div class = "show_games">
         <ol>    
         </ol>
@@ -12,16 +11,7 @@
         <ol> 
         </ol>
     </div>
-    <div class = "show_game_reviews">
-        <ol> 
-        </ol>
-    </div>
-    
-
-    
-
 <p>After you select a game, you can view the reviews for that game, as well as create your own!</p></br>
-
     <div class = "show_new_review">
         <ol>
         </ol>
@@ -32,18 +22,9 @@
 <% if @user.reviews.empty? %>
     <p>You currently have not made any reviews</p>
 <% else %>
-
-
 <%= link_to "View a list of your reviews", user_reviews_path(current_user, @reviews), :class => "show_reviews_link"%>
-
-
-
 <div class = "show_reviews">
     <ol> 
     </ol>
 </div>
-
-
-
-
 <% end %>

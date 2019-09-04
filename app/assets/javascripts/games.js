@@ -5,53 +5,53 @@ $(()=>{
 const gameBindClickHandlers = () => {
     $(".show_games_link").on("click", e => {
         e.preventDefault()
-        history.pushState(null, null, "games")
+        history.pushState(null, null, "/games")
         getGames()
         
     })
 
     $(document).on("click", ".show_game_link", e => {
         e.preventDefault()
-        fetch(event.target.href + '.json')
-        .then(res => res.json())
-            .then(game => {
-                console.log(game)
-
-                var $ol = $("div.show_game ol")
-                $ol.html("")
-                
-
-                let newGame = new Game(game)
-                let gameHtml = newGame.formatShow()
-                console.log(gameHtml)
-                $ol.append(gameHtml);
-                game.reviews.forEach(review => {
-
-                    let newReview = new Review(review)
-                    let reviewHtml = newReview.formatIndex()
-                    console.log(reviewHtml)
-                    $ol.append(reviewHtml);
-                })
-            })
+        showGame()
+        
     })
 }
 
+
+
 const getGames = () => {
-    console.log(event.target.href + '.json')
-        fetch(event.target.href + '.json')
-        .then(res => res.json())
-        .then(games => {
+    fetch(event.target.href + '.json')
+    .then(res => res.json())
+    .then(games => {
 
-            var $ol = $("div.show_games ol")
-            $ol.html("")
-            games.forEach(game => {
+        var $ol = $("div.show_games ol")
+        $ol.html("")
+        games.forEach(game => {
 
-                let newGame = new Game(game)
-                let gameHtml = newGame.formatIndex()
-                console.log(gameHtml)
-                $ol.append(gameHtml);
-            })
+            let newGame = new Game(game)
+            let gameHtml = newGame.formatIndex()
+            console.log(gameHtml)
+            $ol.append(gameHtml);
         })
+    })
+}
+
+const showGame = () => {
+    fetch(event.target.href + '.json')
+    .then(res => res.json())
+    .then(game => {
+        var $ol = $("div.show_game ol")
+        $ol.html("")
+        let newGame = new Game(game)
+        let gameHtml = newGame.formatShow()
+        $ol.append(gameHtml);
+        game.reviews.forEach(review => {
+
+            let newReview = new Review(review)
+            let reviewHtml = newReview.formatIndex()
+            $ol.append(reviewHtml);
+        })
+    })
 }
 
 function Game(game) {
@@ -73,9 +73,8 @@ Game.prototype.formatIndex = function() {
 }
 
 Game.prototype.formatShow = function() {
-
     let gameHtml = `
-        ${this.title} ${this.genre} ${this.platform} ${this.avg_rating} <br>
+    <strong>Game:</strong> Title - ${this.title} Genre - ${this.genre} Platform - ${this.platform} Average Rating - ${this.avg_rating}
     `
     return gameHtml
 }

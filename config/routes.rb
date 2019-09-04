@@ -1,14 +1,11 @@
 Rails.application.routes.draw do
-   # For details on the DSL available within this file, see http://reviews.rubyonrails.org/routing.html
-   
+  
   resources :games, only: [:index, :show, :new, :create] do
     resources :reviews
   end
-
   resources :users do
-    resources :reviews
+    resources :reviews, only: [:index]
   end
-
   resources :reviews
 
   root 'application#home'
@@ -19,7 +16,4 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   post '/logout' => 'sessions#destroy'
   get '/popular' => 'reviews#popular'
-
-  
-  
 end
