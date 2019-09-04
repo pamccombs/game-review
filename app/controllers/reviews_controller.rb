@@ -7,22 +7,21 @@ class ReviewsController < ApplicationController
       set_game
       @reviews = @game.reviews
       respond_to do |format|
-        format.json {render json: @game}
         format.html
+        format.json {render json: @reviews}
       end
     elsif !!params[:user_id]
       @user = current_user
       @reviews = @user.reviews
-      respond_to do |format|
-        format.json {render json: @user}
-        format.html {render 'index.html', :layout => false }
-        format.js {render 'index.js', :layout => false }
+      respond_to do |f|
+        f.html 
+        f.json {render json: @reviews}
       end
     else
       @reviews = Review.all
       respond_to do |format|
-        format.json {render json: @reviews}
         format.html
+        format.json {render json: @reviews}
       end
     end
   end
@@ -53,7 +52,10 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    
+    respond_to do |f|
+      f.html
+      f.json {render json: @review}
+    end
   end
 
   def edit
