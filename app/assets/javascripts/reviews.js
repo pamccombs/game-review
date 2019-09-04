@@ -23,10 +23,30 @@ const reviewBindClickHandlers = () => {
         })
     })
 
-    // $(document).on("click", ".show_link", e => {
-    //     e.preventDefault()
-    //     fetch(event.target.href + '.json')
-    // })
+    $("#new_review").on("submit", function(e){
+        e.preventDefault();
+        const values = $(this).serialize()
+
+        $.post('/reviews', values).done(function(data) {
+            var $ol = $("div.show_new_review ol")
+            $ol.html("")
+            const newReview = new Review(data)
+            const htmlToAdd = newReview.formatShow()
+            $ol.html(htmlToAdd)
+        })
+
+        // $.ajax({
+        //     type: ($("input[name='_method']").val() || this.method),
+        //     url: this.action,
+        //     data: $(this).serialize(),
+        //     success: function(response){
+                
+        //         var $ol = $("div.show_reviews ol")
+        //         $ol.append(response);
+        //     }
+        // })
+        
+    })
 }
 
 function Review(review) {
@@ -35,12 +55,25 @@ function Review(review) {
     this.title = review.title
     this.game_title = review.game.game_title
     this.user = review.user
+    this.rating = review.rating
+    this.body = review.body
 
 }
 
 Review.prototype.formatIndex = function() {
     let reviewHtml = `
         <li> Review Title - <a href="/reviews/${this.id}" class= "show_link"> ${this.title}</a> <br> Game - ${this.game_title}</li>
+    `
+    return reviewHtml
+}
+
+Review.prototype.formatShow = function() {
+    let reviewHtml = `
+        <h2> New Review Submitted <h2>
+        <h3>${this.game_title}</h3>
+        <h3>${this.rating}</h3>
+        <h3>${this.title}</h3>
+        <h4>${this.body}</h4>
     `
     return reviewHtml
 }
@@ -80,18 +113,18 @@ Review.prototype.formatIndex = function() {
 // 2. Submit via AJAX
 
 // 2a. Client-Side
-$(function() {
-    $("#new_review").on("submit", function(e){
-        $.ajax({
-            type: ($("input[name='_method']").val() || this.method),
-            url: this.action,
-            data: $(this).serialize(),
-            success: function(response){
+// $(function() {
+//     $("#new_review").on("submit", function(e){
+//         $.ajax({
+//             type: ($("input[name='_method']").val() || this.method),
+//             url: this.action,
+//             data: $(this).serialize(),
+//             success: function(response){
                 
-                var $ol = $("div.show_reviews ol")
-                $ol.append(response);
-            }
-        })
-        e.preventDefault();
-    })
-})
+//                 var $ol = $("div.show_reviews ol")
+//                 $ol.append(response);
+//             }
+//         })
+//         e.preventDefault();
+//     })
+// })

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     redirect_if_not_logged_in
     # @user = current_user
     # @reviews = @user.reviews
-    # @review = Review.new
+     @review = Review.new
     # respond_to do |format|
     #   format.json {render json: @user}
     #   format.html 

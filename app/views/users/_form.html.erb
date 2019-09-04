@@ -1,0 +1,13 @@
+<%= form_for [@user, @review] do |f| %><br>
+    <%= f.label :game_id, "Choose Game" %><br>
+    <%= f.collection_select :game_id, Game.order(:name),:id,:title, include_blank: true %><br>
+    <%= f.label :rating, "Rating (The rating must be between 1-10.)" %><br>
+    <%= f.number_field :rating %><br>
+    <%= f.label :title, "Title (32 char. max)" %><br>
+    <%= f.text_field :title %></br>
+    <%= f.label :body %></br>
+    <%= f.text_area :body %></br>
+    <%= f.hidden_field :user_id, value: session[:user_id] %>
+    <%#= f.hidden_field :game_id, value: params[:game_id] %>
+    <p><%= f.submit data: { disable_with: false }%></p>
+<% end %>
