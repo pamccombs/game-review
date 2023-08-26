@@ -22,4 +22,5 @@ class Game < ApplicationRecord
         avg = total.to_f/self.reviews.length
         avg.round(1)
     end
+    
 end
